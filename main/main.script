@@ -1,0 +1,13 @@
+function init(self)
+	msg.post(".", "acquire_input_focus")
+
+	-- rotate the cube and the point light
+	go.animate(".", "euler.x", go.PLAYBACK_LOOP_FORWARD, 360, go.EASING_INOUTQUAD, 6)
+	---go.animate(".", "position.z", go.PLAYBACK_LOOP_FORWARD, 10, go.EASING_INOUTQUAD, 6)
+	-- tint the spheres
+	go.set("/spheres#right", "tint", vmath.vector4(0,0.5,1,1))
+	go.set("/spheres#left", "tint", vmath.vector4(1,0.5,0,1))
+
+	self.light_rotation_start = go.get_rotation("/spot")
+	self.light_rotation = vmath.vector3()
+end
